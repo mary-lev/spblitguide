@@ -1,0 +1,51 @@
+[[pages]]
+path = "home.py"
+name = "SPbLitGuide 1999–2020"
+icon = "🏠"
+
+[[pages]]
+path = "pages/description.py"
+name = "Dataset"
+icon = ":books:"
+
+[[pages]]
+path = "pages/datamodel.py"
+name = "Model"
+icon = ":file_cabinet:"
+
+[[pages]]
+path = "pages/eda.py"
+name = "Exploratory Data Analysis"
+icon = ":bar_chart:"
+is_section = true
+
+[[pages]]
+path = "pages/activity.py"
+name = "Analysis: Activity"
+icon = ":chart_with_upwards_trend:"
+
+
+[[pages]]
+path = "pages/map.py"
+name = "Visualisation: Mapping"
+icon = ":world_map:"
+in_section = false
+
+[[pages]]
+path = "pages/map_chart.py"
+name = "Visualisation: Map Chart"
+icon = ":chart_with_upwards_trend:"
+
+[[pages]]
+path = "pages/graph.py"
+name = "Visualisation: Graph"
+icon = ":chart_with_upwards_trend:"
+
+[[pages]]
+path = "pages/test.py"
+name = "Edit data"
+icon = ":pencil2:"
+in_section = false
+
+
+

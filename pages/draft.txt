@@ -1,0 +1,30 @@
+    Now on the site of Your Publishing House all found letters are posted - that's 1255 issues, and new ones are added regularly. 
+    In theory this allows you to use Wordpress's built-in search if you need to find a character or event, in practice it's not too convenient. 
+    It was interesting to see what could be done with partially structured text information using text processing tools.
+
+    ### Data Pipeline
+    1. First, a Python script was used to read all (including some pretty broken) eml files of the newsletter and upload them to a Wordpress site.
+    
+    2. By October 2019, when this operation was performed, the mailing list included 1157 issues. By regular expressions and common sense, 
+    the announcements of events were extracted directly from them: this body of text did not include the "News" columns, 
+    reviews of past literary evenings, announcements of published books, and other literary news that form an important part of the newsletter. 
+    For further experiments, information about each event was left for further experimentation: date, time, place, address, and description.
+    
+    3. Due to the structured nature of the newsletter and Daria Sukhovei's consistency over 20 years, 
+    it was not too difficult to parse the issues, that is, to separate the events and fields within each event. 
+    With slight variations, the texts of the announcements look like this:
+          
+    4. However, it was not easy to match the names and addresses of the venues where the events were held, 
+    as the addresses could have a dozen variations, and there were typos and variations in the names of the venues. 
+    As a result of data cleaning with the help of pandas and difflib, we obtained a database with 14,990 literary events (until October 2019), 
+    862 venues, and 817 addresses (one address could simultaneously or sequentially host different more or less cultural points: 
+    bars, theaters, cafes, bookstores; they also moved repeatedly from place to place).
+    
+    5. On the basis of the collected data a map of the literary life of St. Petersburg for 20 years was drawn. 
+    This allows us to assess the activity of certain "literary places" and their types (these include libraries, museums, faculties and schools, 
+    bars and clubs, bookstores, theaters, art galleries, concert halls, streets and waters of the city and its suburbs). The coordinates of all "venues" 
+    were identified and marked on a map of St. Petersburg.
+    
+    6. A graph of characters who have participated in events over the last 20 years has been compiled. First, the names and surnames 
+    of people were extracted (named entity recognition) from texts and their spelling variants were harmonized. The problem was solved using 
+    a neural network from deeppavlov in conjunction with the natasha package.
