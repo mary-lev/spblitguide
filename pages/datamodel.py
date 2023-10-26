@@ -1,9 +1,8 @@
 import streamlit as st
+from st_pages import show_pages_from_config, add_page_title
 
-st.set_page_config(
-    page_title="Data Model",
-    page_icon="👋",
-)
+add_page_title()
+show_pages_from_config()
 
 st.write("# Data Model 👋")
 

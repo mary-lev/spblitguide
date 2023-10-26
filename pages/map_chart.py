@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pydeck as pdk
+from st_pages import show_pages_from_config, add_page_title
+
+add_page_title()
+
+show_pages_from_config()
 
 st.write("# Mapping the Saint-Petersburg's Literary Space")
 

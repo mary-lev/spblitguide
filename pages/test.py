@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 
+from st_pages import show_pages_from_config, add_page_title
+
+add_page_title()
+
+show_pages_from_config()
 
 def update():
     st.session_state.df = st.session_state.edited_df.copy()

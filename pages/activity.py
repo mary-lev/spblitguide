@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from st_pages import show_pages_from_config, add_page_title
 
-st.set_page_config(
-    page_title="Participation",
-    page_icon="👋",
-)
+add_page_title()
+
+show_pages_from_config()
 
 st.write("""
     # Exploratory Data Analysis

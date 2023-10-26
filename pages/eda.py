@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(
-    page_title="Exploratory Data Analysis",
-    page_icon="👋",
-)
+from st_pages import show_pages_from_config, add_page_title
+
+add_page_title()
+
+show_pages_from_config()
 
 st.write("# Exploratory! Data Analysis 👋")
 

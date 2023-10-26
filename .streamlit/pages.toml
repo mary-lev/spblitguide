@@ -21,20 +21,25 @@ is_section = true
 
 [[pages]]
 path = "pages/activity.py"
-name = "Analysis: Activity"
+name = "EDA: Events' Distribution"
 icon = ":chart_with_upwards_trend:"
 
 [[pages]]
 path = "pages/person_activity.py"
-name = "Analysis: People"
+name = "EDA: People's Activity"
 icon = ":chart_with_upwards_trend:"
 
+
+[[pages]]
+name = "Visualisation"
+icon = ":world_map:"
+in_section = false
+is_section = true
 
 [[pages]]
 path = "pages/map.py"
 name = "Visualisation: Mapping"
 icon = ":world_map:"
-in_section = false
 
 [[pages]]
 path = "pages/map_chart.py"
