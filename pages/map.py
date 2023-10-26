@@ -5,7 +5,7 @@ import pandas as pd
 import folium
 from folium.plugins import MarkerCluster
 
-os.environ["access_token"] == st.secrets["access_token"]
+os.environ["access_token"] = st.secrets["access_token"]
 
 st.write("# Mapping the Saint-Petersburg's Literary Space")
 
