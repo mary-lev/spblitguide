@@ -38,17 +38,17 @@ is_section = true
 
 [[pages]]
 path = "pages/map.py"
-name = "Visualisation: Mapping"
+name = "Geographical Distribution"
 icon = ":world_map:"
 
 [[pages]]
 path = "pages/map_chart.py"
-name = "Visualisation: Map Chart"
+name = "Event Frequency's Mapping"
 icon = ":chart_with_upwards_trend:"
 
 [[pages]]
 path = "pages/graph.py"
-name = "Visualisation: Graph"
+name = "Literary Interaction Network"
 icon = ":chart_with_upwards_trend:"
 
 [[pages]]

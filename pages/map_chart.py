@@ -8,7 +8,12 @@ add_page_title()
 
 show_pages_from_config()
 
-st.write("# Mapping the Saint-Petersburg's Literary Space")
+st.write("""
+        # Mapping the Saint-Petersburg's Literary Space
+        ## Visual Representation of Event Frequency at Various Locations in Saint-Petersburg
+        This interactive map offers a three-dimensional view of the frequency of literary events held at various locations across Saint-Petersburg. Each column represents a unique location, and the height of the column corresponds to the number of events that took place at that location. The color intensity of the columns also corresponds to the event frequency, providing a dual-visual cue to easily identify areas with higher concentrations of literary activities. The tooltip feature provides the exact name of the location and the number of events when hovered over each column, giving more detailed information. The map employs a pitch perspective to provide a three-dimensional view, making it easier to interpret the spatial distribution and frequency of events. Through this visualization, users can quickly grasp the hubs of literary activity across the city and identify notable venues by their event frequency.
+        """
+)
 
 chart_data = pd.read_csv("data/amount.csv")
 

@@ -11,7 +11,12 @@ add_page_title()
 
 show_pages_from_config()
 
-st.write("# Mapping the Saint-Petersburg's Literary Space")
+st.write("""
+        # Mapping the Saint-Petersburg's Literary Space
+        ## Geographical Distribution of Literary Events in Saint-Petersburg (1999-2019)
+        This map provides a visual representation of the various locations in Saint-Petersburg where literary events were held between the years 1999 and 2019. Each marker on the map denotes a unique location where one or more of these events took place. By clustering the markers, it offers a clear view of areas with higher concentrations of literary activities. Clicking on a marker reveals the name of the venue at that particular location. The underlying data is sourced from a curated database, offering insights into the spatial distribution of literary culture in Saint-Petersburg over two decades. The map is rendered using Folium, with the Stamen Toner tile layer providing a high-contrast, black and white basemap that accentuates the markers and clusters, making it easy to identify areas of notable literary activity.
+        """
+)
 
 m = folium.Map(
     location=[59.946288, 30.349214],
