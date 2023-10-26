@@ -24,6 +24,11 @@ path = "pages/activity.py"
 name = "Analysis: Activity"
 icon = ":chart_with_upwards_trend:"
 
+[[pages]]
+path = "pages/person_activity.py"
+name = "Analysis: People"
+icon = ":chart_with_upwards_trend:"
+
 
 [[pages]]
 path = "pages/map.py"

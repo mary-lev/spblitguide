@@ -1,12 +1,20 @@
 import streamlit as st
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 st.set_page_config(
     page_title="Participation",
     page_icon="👋",
 )
 
-st.write("# Exploratory Data Analysis: Events' Frequency")
+st.write("""
+    # Exploratory Data Analysis
+    ## Monthly Event Frequency Over the Years
+    A comparative visualization of the monthly distribution of events over different years. 
+    Each bar represents the count of events that occurred in a particular month of a specific year. 
+    """
+)
 
 df = pd.read_csv("data/event_frequency.csv")
 
@@ -35,34 +43,35 @@ pivot_table.index = pivot_table.index.map(month_mapping)
 pivot_table.index = pd.CategoricalIndex(pivot_table.index, categories=[month_mapping[i] for i in range(1, 13)], ordered=True)
 
 # Now sort the index
-pivot_table.sort_index(inplace=True)
+pivot_table.sort_index(axis=1, ascending=True, inplace=True)
 
 st.bar_chart(pivot_table)
 
-# People
+st.write("""
+    ### Key Observations:
+    - Seasonal Trends: The chart may reflect any seasonal trends in event frequencies. For instance, certain months may consistently show higher or lower event occurrences over the years.
+    - Yearly Comparison: It allows for a quick comparison of event frequency between different years on a month-by-month basis.
+    - Month-wise Distribution: The month-wise distribution of events is clearly depicted, allowing for an analysis of which months are most active with events.
+    - Variation Across Years: Any significant variations in event frequency across years are visually evident. This could be due to various external factors affecting the occurrence of events.
+    """
+)
 
 
-import matplotlib.pyplot as plt
 
-# Assume df is your DataFrame
-df = pd.read_csv("data/person_activity.csv")
+# Places participants
+df = pd.read_csv("data/events_participation.csv")
+grouped_data = df.groupby(['place_name', 'participant_count']).size().reset_index(name='occurrences')
 
-plt.figure(figsize=(10,6))
-plt.hist(df['event_count'], bins=range(1, df['event_count'].max() + 1), color='skyblue', edgecolor='black')
-plt.xlabel('Number of Events Participated')
-plt.ylabel('Frequency')
-plt.title('Distribution of Event Participation')
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+# Find the most frequent participant count per place
+idx = grouped_data.groupby(['place_name'])['occurrences'].idxmax()
+most_frequent_data = grouped_data.loc[idx]
 
-st.pyplot(plt)
-
-# Another one
-
-summary = df['event_count'].describe()
-st.write(summary)
-plt.figure(figsize=(10,6))
-plt.boxplot(df['event_count'])
-plt.ylabel('Number of Events Participated')
-plt.title('Box Plot of Event Participation')
-
+sns.set_style("whitegrid")
+plt.figure(figsize=(10, 6))
+sns.barplot(data=most_frequent_data, x='place_name', y='participant_count', hue='place_name', palette='viridis')
+plt.xticks(rotation=90)  # Rotate x labels for better readability
+plt.title('Most Frequent Participant Count per Place')
+plt.xlabel('Place')
+plt.ylabel('Participant Count')
+plt.legend().remove() 
 st.pyplot(plt)
