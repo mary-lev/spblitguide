@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from streamlit_folium import st_folium
 import pandas as pd
@@ -7,6 +8,7 @@ from folium.plugins import MarkerCluster
 access_token = st.secrets['access_token']
 
 st.write("# Mapping the Saint-Petersburg's Literary Space")
+st.write("DB username:", st.secrets["access_token"])
 
 m = folium.Map(
     location=[59.946288, 30.349214],
