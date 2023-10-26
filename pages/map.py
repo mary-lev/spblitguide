@@ -8,8 +8,12 @@ from folium.plugins import MarkerCluster
 st.write("# Mapping the Saint-Petersburg's Literary Space")
 
 data = st.cache_data(pd.read_csv)("data/addresses.csv")
-
-m = folium.Map(location=[59.946288, 30.349214], zoom_start=12, tiles='Stamen Toner')
+m = folium.Map(
+    location=[59.946288, 30.349214],
+    zoom_start=12,
+    tiles="https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.jpg",
+    attr="Mapbox attribution",
+)
 
 marker_cluster = MarkerCluster().add_to(m)
 
