@@ -5,14 +5,13 @@ import pandas as pd
 import folium
 from folium.plugins import MarkerCluster
 
-os.environ["access_token"] = st.secrets["access_token"]
 
 st.write("# Mapping the Saint-Petersburg's Literary Space")
 
 m = folium.Map(
     location=[59.946288, 30.349214],
     zoom_start=12,
-    tiles="https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.jpg?access_token={access_token}",
+    tiles="https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.jpg?access_token={st.secrets.access_token}",
     attr="Mapbox attribution",
 )
 
