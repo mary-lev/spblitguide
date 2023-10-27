@@ -47,6 +47,11 @@ name = "Event Frequency's Mapping"
 icon = ":chart_with_upwards_trend:"
 
 [[pages]]
+path = "pages/heatmap.py"
+name = "Heat Map of Events' Frequency"
+icon = ":world_map:"
+
+[[pages]]
 path = "pages/graph.py"
 name = "Literary Interaction Network"
 icon = ":chart_with_upwards_trend:"

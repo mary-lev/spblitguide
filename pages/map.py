@@ -1,4 +1,3 @@
-import os
 import streamlit as st
 from streamlit_folium import st_folium
 import pandas as pd
@@ -7,7 +6,7 @@ from folium.plugins import MarkerCluster
 
 from st_pages import show_pages_from_config, add_page_title
 
-add_page_title()
+#add_page_title()
 
 show_pages_from_config()
 
