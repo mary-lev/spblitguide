@@ -31,7 +31,7 @@ icon = ":chart_with_upwards_trend:"
 
 
 [[pages]]
-name = "Visualisation"
+name = "Mapping Literary Space"
 icon = ":world_map:"
 in_section = false
 is_section = true
@@ -55,6 +55,7 @@ icon = ":world_map:"
 path = "pages/graph.py"
 name = "Literary Interaction Network"
 icon = ":chart_with_upwards_trend:"
+is_section = true
 
 [[pages]]
 path = "pages/test.py"
