@@ -6,11 +6,10 @@ add_page_title()
 
 show_pages_from_config()
 
-st.write("# Data description 👋")
-
-
 st.markdown(
     """
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10086515.svg)](https://doi.org/10.5281/zenodo.10086515)
+
     The dataset originates from **SPbLitGuide**, a long-standing newsletter maintained by Daria Sukhovey since May 1999, 
     focusing on the primary events of St. Petersburg's literary life. The newsletter has undergone several hosting changes 
     over the years: it was initially published on http://levin.rinet.ru, moved to the Krupskaya Book Fair website from 2010 to 2015, 
