@@ -12,15 +12,15 @@ st.markdown(
 
     ```
     @dataset{levchenko_2023_10086515,
-    author       = {Levchenko, Maria},
-    title        = {{Literary Events in Saint Petersburg (1999-2019) 
-                    from SPbLitGuide Newsletters}},
-    month        = nov,
-    year         = 2023,
-    publisher    = {Zenodo},
-    version      = {1.0},
-    doi          = {10.5281/zenodo.10086515},
-    url          = {https://doi.org/10.5281/zenodo.10086515}
+        author       = {Levchenko, Maria},
+        title        = {{Literary Events in Saint Petersburg (1999-2019) 
+                        from SPbLitGuide Newsletters}},
+        month        = nov,
+        year         = 2023,
+        publisher    = {Zenodo},
+        version      = {1.0},
+        doi          = {10.5281/zenodo.10086515},
+        url          = {https://doi.org/10.5281/zenodo.10086515}
     }
     ```
 
