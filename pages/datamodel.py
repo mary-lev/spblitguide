@@ -4,10 +4,6 @@ from st_pages import show_pages_from_config, add_page_title
 add_page_title()
 show_pages_from_config()
 
-st.write("# Data Model 👋")
-
-
-
 st.markdown(
     """
     The data model leverages Django's Object-Relational Mapping (ORM) 

@@ -8,9 +8,9 @@ show_pages_from_config()
 
 st.markdown(
     """
-    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10086515.svg)](https://doi.org/10.5281/zenodo.10086515)
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10086515.svg)](https://doi.org/10.5281/zenodo.10086515) [![Data License](https://img.shields.io/badge/Data%20License-CC%20By%20NC%204.0-red.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-    ```
+    ```bibtex
     @dataset{levchenko_2023_10086515,
         author       = {Levchenko, Maria},
         title        = {{Literary Events in Saint Petersburg (1999-2019) 
