@@ -10,6 +10,20 @@ st.markdown(
     """
     [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10086515.svg)](https://doi.org/10.5281/zenodo.10086515)
 
+    ```
+    @dataset{levchenko_2023_10086515,
+    author       = {Levchenko, Maria},
+    title        = {{Literary Events in Saint Petersburg (1999-2019) 
+                    from SPbLitGuide Newsletters}},
+    month        = nov,
+    year         = 2023,
+    publisher    = {Zenodo},
+    version      = {1.0},
+    doi          = {10.5281/zenodo.10086515},
+    url          = {https://doi.org/10.5281/zenodo.10086515}
+    }
+    ```
+
     The dataset originates from **SPbLitGuide**, a long-standing newsletter maintained by Daria Sukhovey since May 1999, 
     focusing on the primary events of St. Petersburg's literary life. The newsletter has undergone several hosting changes 
     over the years: it was initially published on http://levin.rinet.ru, moved to the Krupskaya Book Fair website from 2010 to 2015, 
