@@ -36,7 +36,7 @@ st.markdown(
     Initial data cleaning was aided by regular expressions and common sense filtering to omit unrelated sections such as "News" columns, book reviews, and other literary news. Pandas and difflib libraries were employed for advanced data cleaning and standardization, especially for venue names and addresses that had variations and typographical errors.
     After cleaning, the dataset contains:
 
-    - 14,990 literary events
+    - 14 498 literary events
     - 862 venues
     - 817 unique addresses
 
