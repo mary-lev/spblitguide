@@ -4,19 +4,33 @@ name = "SPbLitGuide 1999–2020"
 icon = "🏠"
 
 [[pages]]
+name = "Data"
+icon = ":books:"
+is_section = true
+
+[[pages]]
 path = "pages/description.py"
 name = "Dataset"
 icon = ":books:"
+in_section = true
 
 [[pages]]
 path = "pages/datamodel.py"
 name = "Model"
 icon = ":file_cabinet:"
+in_section = true
+
+[[pages]]
+path = "pages/processing.py"
+name = "Data Processing"
+icon = ":file_cabinet:"
+in_section = true
 
 [[pages]]
 path = "pages/eda.py"
 name = "Exploratory Data Analysis"
 icon = ":bar_chart:"
+in_section = false
 is_section = true
 
 [[pages]]
