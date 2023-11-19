@@ -57,21 +57,39 @@ st.write("""
 )
 
 
+st.write("""
+    ### Weekday Event Distribution Analysis:
+         """)
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-# Places participants
-df = pd.read_csv("data/events_participation.csv")
-grouped_data = df.groupby(['place_name', 'participant_count']).size().reset_index(name='occurrences')
+df['weekday'] = df['date'].dt.day_name()
 
-# Find the most frequent participant count per place
-idx = grouped_data.groupby(['place_name'])['occurrences'].idxmax()
-most_frequent_data = grouped_data.loc[idx]
+# Map weekdays to the order you want them to appear in the chart
+weekday_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+df['week_day_name'] = pd.Categorical(df['weekday'], categories=weekday_order, ordered=True)
 
-sns.set_style("whitegrid")
+df['year'] = df['date'].dt.year
+
+# Group by 'year' and 'week_day_name', then count the number of events
+event_counts = df.groupby(['year', 'week_day_name'], observed=True).size().reset_index(name='event_count')
+
+# Create a box plot of event counts for each weekday across different years
 plt.figure(figsize=(10, 6))
-sns.barplot(data=most_frequent_data, x='place_name', y='participant_count', hue='place_name', palette='viridis')
-plt.xticks(rotation=90)  # Rotate x labels for better readability
-plt.title('Most Frequent Participant Count per Place')
-plt.xlabel('Place')
-plt.ylabel('Participant Count')
-plt.legend().remove() 
+sns.boxplot(x='week_day_name', y='event_count', hue="week_day_name", data=event_counts, palette="Set2")
+plt.title('Event Frequency by Weekday Across Years')
+plt.xlabel('Day of the Week')
+plt.ylabel('Number of Events')
+plt.xticks(rotation=45)
+
+
+# Display the plot
 st.pyplot(plt)
+
+st.write("""
+    - The box plot shows the spread and central tendency of event counts across different weekdays.
+    - Look for outliers to identify unusually busy or quiet days.
+    - The median line in each box indicates the typical number of events for each weekday.
+    - Variability in the box size and whisker length can reveal consistency in event scheduling.
+    """
+)
