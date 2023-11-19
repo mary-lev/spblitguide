@@ -4,19 +4,19 @@ name = "SPbLitGuide 1999–2020"
 icon = "🏠"
 
 [[pages]]
-name = "Data"
+name = "Dataset"
 icon = ":books:"
 is_section = true
 
 [[pages]]
 path = "pages/description.py"
-name = "Dataset"
+name = "Dataset Description"
 icon = ":books:"
 in_section = true
 
 [[pages]]
 path = "pages/datamodel.py"
-name = "Model"
+name = "Data Modeling"
 icon = ":file_cabinet:"
 in_section = true
 
@@ -69,7 +69,7 @@ icon = ":world_map:"
 path = "pages/graph.py"
 name = "Literary Interaction Network"
 icon = ":chart_with_upwards_trend:"
-is_section = true
+in_section = true
 
 [[pages]]
 path = "pages/test.py"

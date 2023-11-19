@@ -29,9 +29,9 @@ marker_cluster = MarkerCluster().add_to(m)
 data = st.cache_data(pd.read_csv)("data/addresses.csv")
 
 for n, adress in data.iterrows():
-    text = adress['event__place__name']
+    text = adress['Place Name']
     folium.Marker(
-        location=(adress['lat'], adress['lon']),
+        location=(adress['Latitude'], adress['Longitude']),
         popup=folium.Popup(text),
         icon=folium.Icon(color='green')
     ).add_to(marker_cluster)

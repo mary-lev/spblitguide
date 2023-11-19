@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 from st_pages import show_pages_from_config, add_page_title
 
@@ -7,8 +8,9 @@ show_pages_from_config()
 st.markdown(
     """
     ### Data Source and Collection
-    The data is sourced from electronic mail (eml) files uploaded to a Wordpress site. As of October 2019, there were 1157 issues in the mailing list.
-    Exported from WordPress database into XML format the source data was something like this:
+    The data was sourced from electronic mail (eml) files uploaded to a WordPress site. 
+    As of October 2019, the mailing list contained 1,157 issues. The source data, initially in the WordPress database, 
+    was exported into an XML format, resembling the following structure:
 
     ```html
         <post>
@@ -26,12 +28,12 @@ st.markdown(
                 Космическо-эзотерическо-п<wbr />оэтический вечер Мари Stell "Трансцендентность". Погружение в мир таинственных образов и чувственных переживаний, не поддающихся контролю форм
     ```
 
-    So it was relatively structured: it has a a date and time, a place, a description of an event and sometimes an address of a place and a source of information about this event. But it was not very clean: there were a lot of html tags, some of the addresses were missed and messed, and there were a lot of typos.
+    This data was relatively structured, containing dates and times, places, descriptions of events, and occasionally, addresses and sources of information. However, it also included a considerable amount of HTML tags, missing or inconsistent addresses, and numerous typos.
 
     ### Data Cleaning and Preprocessing
     
-    Initial data cleaning was aided by regular expressions and common sense filtering to omit unrelated sections such as "News" columns, book reviews, and other literary news. 
-    As a result we got a data in csv format with the following columns:
+    Initial data cleaning involved using regular expressions and common sense filtering to remove unrelated sections, 
+    such as news columns, book reviews, and other literary news. The cleaned data was converted into a CSV format with the following columns:
 
     - "Event Date": date and time of the event in naive format, e.g. "05.03.15 четверг 19.00"
     - "Event Description": description of the event in text format,
@@ -40,17 +42,54 @@ st.markdown(
     - "Permalink": link to the issue on the website, e.g. "https://isvoe.ru/spblitgid/2015/03/05/spblitguide-15-03-1/",
     - "Publication Date": date of the issue publication, e.g. "2015-03-05".
 
-    After this processing we've got 44 930 records about the events, but in facts many of them were repeted in different issues, because each event can be announced several times before it happens.
-    
-    Pandas and difflib libraries were employed for advanced data cleaning and standardization, especially for venue names and addresses that had variations and typographical errors.
+    After processing, we obtained 44,930 records of events. Many events were repeated across different issues, 
+    as the issues were published 3-5 times a month, and each event could be announced several times before it occurred.
 
-    After cleaning, the dataset contains:
+    ### Duplicate Filtering
+    We needed to filter out duplicates to retain only unique events. This task involved more than identifying exact duplicates due to potential slight variations in event descriptions, such as changes in dates, times, or venues. Fuzzy matching algorithms were applied to identify and eliminate these duplicates, resulting in a total of 14,498 unique events.
+
+    ## Named Entity Recognition
+
+    Our goal was to extract and analyze various types of named entities from the records, including addresses, 
+    venue names, dates. Dates, addresses, and places are typically mentioned in the first line of 
+    an event's description and are often marked with HTML tags like <b><i> or <strong><em>, 
+    making them relatively straightforward to extract using regular expressions.
+
+    The Natasha library, designed for processing Russian language, was utilized to extract this information, 
+    which was then placed into separate columns. The Pandas and difflib libraries were used for advanced data cleaning and standardization, 
+    particularly for standardizing venue names and addresses that had variations and typographical errors.
+
+    After cleaning, the dataset includes:
 
     - 14 498 literary events
     - 862 venues
     - 817 unique addresses
 
+    ### Persons' Names Extraction
+
+    We utilized the DeepPavlov library for extracting persons' names. Based on neural network models, this tool was effective 
+    for Russian language but not without errors. It successfully extracted a comprehensive list of names and surnames, 
+    which we then manually reviewed and refined for accuracy.
+
+    For normalization of Russian names, which often vary due to grammatical cases and different writing styles 
+    (e.g., Дарья Суховей, Д. Суховей, Даша Суховей), we employed the Natasha library. This tool effectively handled the variations in name forms.
+
+    Additionally, we explored the use of Large Language Models (LLMs) like ChatGPT-3.5 and ChatGPT-4 
+    for name extraction. Although these models demonstrated superior performance, they were not incorporated 
+    into the final dataset version due to their slower processing speeds and higher computational resource demands. 
+    A comparative analysis of these models can be found in our [Colab notebook](https://colab.research.google.com/drive/1Tu8UgakY8QVjmwLmgcV-YPd-4Zr9jlci#scrollTo=HRNbq5B71CJU).
+
+    ### Geographical Coordinates Extraction
+
+    We used the Yandex Geocoder API to extract geographical coordinates from addresses. After cleaning and standardizing the addresses,
+    we obtained 817 unique addresses. The Yandex Geocoder API was used to extract geographical coordinates from these addresses.
+    We put the latitude and longitude coordinates into separate columns.
+
     """
-    
 )
+
+df = st.cache_data(pd.read_csv)("data/addresses.csv", index_col=0)
+st.dataframe(df)
+    
+
 

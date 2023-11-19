@@ -27,34 +27,30 @@ st.markdown(
     The dataset originates from **SPbLitGuide**, a long-standing newsletter maintained by Daria Sukhovey since May 1999, 
     focusing on the primary events of St. Petersburg's literary life. The newsletter has undergone several hosting changes 
     over the years: it was initially published on http://levin.rinet.ru, moved to the Krupskaya Book Fair website from 2010 to 2015, 
-    and has since been hosted by the ["One's Own Publishing House" website](https://isvoe.ru/spblitgid/). For the past two decades, subscribers have received multiple announcements of literary events in St. Petersburg each month. The data set at hand comprises 1255 issues of this newsletter, spanning a 20-year period until October 2019. The primary aim is to extract and analyze event announcements through text processing methodologies, including Python scripts, regular expressions, and machine learning algorithms.
+    and has since been hosted by the ["One's Own Publishing House" website](https://isvoe.ru/spblitgid/). For the past two decades, 
+    subscribers have received multiple announcements of literary events in St. Petersburg each month. 
+    The data set at hand comprises 1255 issues of this newsletter, spanning a 20-year period until October 2019. 
+    The primary aim is to extract and analyze event announcements through text processing methodologies, including Python scripts, 
+    regular expressions, and machine learning algorithms.
 
-    ### Data Source and Collection
-    The data is sourced from electronic mail (eml) files uploaded to a Wordpress site. As of October 2019, there were 1157 issues in the mailing list. The Python programming language was used to scrape these files, particularly focusing on event announcements.
-
-    ### Data Cleaning and Preprocessing
-    Initial data cleaning was aided by regular expressions and common sense filtering to omit unrelated sections such as "News" columns, book reviews, and other literary news. Pandas and difflib libraries were employed for advanced data cleaning and standardization, especially for venue names and addresses that had variations and typographical errors.
-    After cleaning, the dataset contains:
+    The dataset contains:
 
     - 14 498 literary events
     - 862 venues
     - 817 unique addresses
 
-    ### Additional Data Representations
-
-    - **Literary Life Map of St. Petersburg**: Geographic locations for 862 venues were identified and mapped.
-    - **Graph of Characters**: A graph depicting individuals who have participated in events over the 20-year span was compiled, using named entity recognition and neural network techniques.
-
     ### Limitations
 
-    The dataset lacks some textual sections like book reviews, "News" columns, and other literary reports.
-    Name and address fields had to be extensively cleaned due to inconsistencies and errors, which might introduce some level of inaccuracy.
+    The dataset is subject to several limitations:
 
-    ### Potential Applications
-
-    The cleaned and structured dataset offers valuable insights into the literary landscape of St. Petersburg, facilitating analyses such as trends in literary events, identification of key venues, and community engagement over two decades.
-
-    ### ⇨ [Data Model](Model)
+    - Perspective Bias: The data predominantly reflects Dar'ia Sukhovei's perspective, initially focusing on events that interested her and her literary circle, although later expanding in scope. This perspective has shaped the newsletter since its inception.
+    - Event Coverage: Despite the author's deep integration into St. Petersburg's literary community and her attention to detail, some events might have been inadvertently excluded. The author's active participation in the literary scene provides a rich but potentially selective representation of events.
+    - Inclusivity of Cultural Events: While the newsletter covers a range of cultural activities including cinema, art, and music, alongside literary events, there is no guarantee that these spheres are represented as comprehensively as the literary events. This could result in a selection bias towards literary events.
+    - Temporal and Geographical Scope: The dataset is limited to events up to a certain year and focuses primarily on St. Petersburg, which may exclude relevant regional events and recent developments.
+    - Data Quality and Consistency: Variability in data collection and reporting methods over time could affect the consistency and reliability of the dataset for longitudinal studies.
+    - Extraction and Cleaning Methodology: The manual and automated processes used in data cleaning and entity extraction may introduce errors or biases.
+    - Unrecorded Changes: Details of events, such as venue or time changes, might not be captured if they occurred last-minute.
+    
 
 
     
