@@ -72,6 +72,12 @@ icon = ":chart_with_upwards_trend:"
 in_section = true
 
 [[pages]]
+path = "pages/calendar.py"
+name = "Calendar"
+icon = ":calendar:"
+in_section = false
+
+[[pages]]
 path = "pages/test.py"
 name = "Edit data"
 icon = ":pencil2:"

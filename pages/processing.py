@@ -46,7 +46,8 @@ st.markdown(
     as the issues were published 3-5 times a month, and each event could be announced several times before it occurred.
 
     ### Duplicate Filtering
-    We needed to filter out duplicates to retain only unique events. This task involved more than identifying exact duplicates due to potential slight variations in event descriptions, such as changes in dates, times, or venues. Fuzzy matching algorithms were applied to identify and eliminate these duplicates, resulting in a total of 14,498 unique events.
+    We needed to filter out duplicates to retain only unique events. This task involved more than identifying exact duplicates due to potential slight variations in event descriptions, such as changes in dates, times, or venues. 
+    Fuzzy matching algorithms were applied to identify and eliminate these duplicates, resulting in a total of 14,498 unique events.
 
     ## Named Entity Recognition
 
