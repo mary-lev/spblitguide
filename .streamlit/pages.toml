@@ -10,7 +10,7 @@ is_section = true
 
 [[pages]]
 path = "pages/description.py"
-name = "Dataset Description"
+name = "Description"
 icon = ":books:"
 in_section = true
 
