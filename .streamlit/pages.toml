@@ -65,9 +65,21 @@ path = "pages/heatmap.py"
 name = "Heat Map of Events' Frequency"
 icon = ":world_map:"
 
+
+[[pages]]
+name = "Network Analysis"
+is_section = true
+icon = ":chart:"
+
 [[pages]]
 path = "pages/graph.py"
 name = "Literary Interaction Network"
+icon = ":chart_with_upwards_trend:"
+in_section = true
+
+[[pages]]
+path = "pages/network_2014.py"
+name = "Literary Communities"
 icon = ":chart_with_upwards_trend:"
 in_section = true
 
