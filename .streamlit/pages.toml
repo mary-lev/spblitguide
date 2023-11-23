@@ -58,7 +58,7 @@ icon = ":world_map:"
 [[pages]]
 path = "pages/map_chart.py"
 name = "Event Frequency's Mapping"
-icon = ":chart_with_upwards_trend:"
+icon = ":world_map:"
 
 [[pages]]
 path = "pages/heatmap.py"
@@ -69,20 +69,19 @@ icon = ":world_map:"
 [[pages]]
 name = "Network Analysis"
 is_section = true
-icon = ":chart:"
+icon = ":people_holding_hands:"
 
 [[pages]]
 path = "pages/graph.py"
 name = "Literary Interaction Network"
-icon = ":chart_with_upwards_trend:"
+icon = ":linked_paperclips:"
 in_section = true
 
 [[pages]]
 path = "pages/network_2014.py"
 name = "Literary Communities"
-icon = ":chart_with_upwards_trend:"
+icon = ":linked_paperclips:"
 in_section = true
-
 
 [[pages]]
 path = "pages/test.py"
