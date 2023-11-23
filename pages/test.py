@@ -9,16 +9,16 @@ show_pages_from_config()
 
 def update():
     st.session_state.df = st.session_state.edited_df.copy()
-    st.session_state.df.to_csv("data/data_export.csv", index=False)
+    st.session_state.df.to_csv("data/example.csv", index=False)
 
 
-df = pd.read_csv("data/data_export.csv")
+df = pd.read_csv("data/example.csv")
 
 
 # Initialize session state with dataframes
 # Include initialization of "edited" slots by copying originals
 if 'df' not in st.session_state:
-    st.session_state.df = pd.read_csv("data/data_export.csv")
+    st.session_state.df = pd.read_csv("data/example.csv")
 
 st.session_state.edited_df = st.data_editor(
     df,
@@ -30,7 +30,7 @@ st.session_state.edited_df = st.data_editor(
         "address": None,
         "description": st.column_config.Column(
             "description",
-            help="вуыс",
+            help="help",
             required=True,
         ),
     },

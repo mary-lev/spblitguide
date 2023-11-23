@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from PIL import Image
 from st_pages import show_pages_from_config, add_page_title
 
 add_page_title()
@@ -8,6 +9,13 @@ show_pages_from_config()
 st.markdown(
     """
     ### Data Source and Collection
+    """)
+
+image = Image.open('pipeline.png')
+st.image("pipeline.png", caption='Data Pipeline')
+    
+st.markdown(
+    """
     The data was sourced from electronic mail (eml) files uploaded to a WordPress site. 
     As of October 2019, the mailing list contained 1,157 issues. The source data, initially in the WordPress database, 
     was exported into an XML format, resembling the following structure:

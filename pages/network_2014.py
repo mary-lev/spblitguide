@@ -13,6 +13,8 @@ add_page_title()
 
 show_pages_from_config()
 
+st.write("This graph visualizes the co-participation of individuals in events and highlights identified communities within the literary network.")
+
 year = st.selectbox(
     "Select a year:",
     (
