@@ -9,7 +9,6 @@ add_page_title()
 show_pages_from_config()
 
 st.write("""
-    # Exploratory Data Analysis
     ## Monthly Event Frequency Over the Years
     A comparative visualization of the monthly distribution of events over different years. 
     Each bar represents the count of events that occurred in a particular month of a specific year. 

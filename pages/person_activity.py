@@ -13,7 +13,6 @@ show_pages_from_config()
 df = pd.read_csv("data/person_activity.csv")
 
 st.write("""
-    # Exploratory Data Analysis
     ## Distribution of Event Participation (Log Scale)
     This histogram illustrates the distribution of individuals based on the number of events they have participated in, on a logarithmic scale. The x-axis represents the number of events participated, ranging from 1 to the maximum event count observed in the dataset. The y-axis represents the frequency of individuals, in a logarithmic scale, who have participated in a particular number of events. Utilizing a log scale for the frequency helps in better visualizing the distribution, especially when dealing with a wide range of frequency values. Each bar represents the count of individuals who have participated in a particular number of events. This visualization provides an insight into the frequency of event participation among individuals, enabling a better understanding of participation patterns.
     """
