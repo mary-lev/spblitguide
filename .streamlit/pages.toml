@@ -84,6 +84,12 @@ icon = ":linked_paperclips:"
 in_section = true
 
 [[pages]]
+path = "pages/network.py"
+name = "Full Network"
+icon = ":linked_paperclips:"
+in_section = true
+
+[[pages]]
 path = "pages/test.py"
 name = "Edit data"
 icon = ":pencil2:"
