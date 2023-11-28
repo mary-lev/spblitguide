@@ -1,10 +1,10 @@
+import pandas as pd
 import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
 
 import streamlit as st
-import pandas as pd
-import pydeck as pdk
+
 from st_pages import show_pages_from_config, add_page_title
 
 #add_page_title()

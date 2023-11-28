@@ -65,6 +65,10 @@ path = "pages/heatmap.py"
 name = "Heat Map of Events' Frequency"
 icon = ":world_map:"
 
+[[pages]]
+path = "pages/heatmap_year.py"
+name = "Dynamic Heatmap"
+icon = ":world_map:"
 
 [[pages]]
 name = "Network Analysis"
