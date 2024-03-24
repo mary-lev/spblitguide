@@ -98,22 +98,61 @@ for node, centrality in top_ten_nodes:
 
 
 closeness_centrality = networkx.closeness_centrality(G)
+sorted_nodes_by_closeness_centrality = sorted(closeness_centrality.items(), key=lambda item: item[1], reverse=True)
+top_ten_nodes = sorted_nodes_by_closeness_centrality[:10]
+
+st.write("Closeness Centrality: ")
+st.write("Closeness centrality is a measure of how close a node is to all other nodes in a network. It's based on the average length of the shortest path from the node to all other nodes in the graph. The idea is to identify how easily a node can reach other nodes in the network.")
+st.write("Top ten nodes by closeness centrality:")
+for node, centrality in top_ten_nodes:
+    st.write(f"{node}: {centrality}")
+
 betweenness_centrality = networkx.betweenness_centrality(G)
+sorted_nodes_by_betweenness_centrality = sorted(betweenness_centrality.items(), key=lambda item: item[1], reverse=True)
+top_ten_nodes = sorted_nodes_by_betweenness_centrality[:10]
+
+st.write("Betweenness Centrality: ")
+st.write("Betweenness centrality is a measure of how often a node acts as a bridge along the shortest path between two other nodes in a network. It's based on the number of shortest paths that pass through the node.")
+st.write("Top ten nodes by betweenness centrality:")
+for node, centrality in top_ten_nodes:
+    st.write(f"{node}: {centrality}")
+
 eigenvector_centrality = networkx.eigenvector_centrality(G)
+sorted_nodes_by_eigenvector_centrality = sorted(eigenvector_centrality.items(), key=lambda item: item[1], reverse=True)
+top_ten_nodes = sorted_nodes_by_eigenvector_centrality[:10]
+st.write("Eigenvector Centrality: ")
+st.write("Eigenvector centrality is a measure of the influence of a node in a network. It's based on the idea that connections to high-scoring nodes contribute more to the score of the node in question.")
+st.write("Top ten nodes by eigenvector centrality:")
+for node, centrality in top_ten_nodes:
+    st.write(f"{node}: {centrality}")
+
 pagerank = networkx.pagerank(G)
+sorted_nodes_by_pagerank = sorted(pagerank.items(), key=lambda item: item[1], reverse=True)
+top_ten_nodes = sorted_nodes_by_pagerank[:10]
+st.write("PageRank: ")
+st.write("PageRank is a measure of the importance of a node in a network. It's based on the idea that connections to high-scoring nodes contribute more to the score of the node in question.")
+st.write("Top ten nodes by PageRank:")
+for node, centrality in top_ten_nodes:
+    st.write(f"{node}: {centrality}")
 
 clustering_coefficient = networkx.clustering(G)
+sorted_nodes_by_clustering_coefficient = sorted(clustering_coefficient.items(), key=lambda item: item[1], reverse=True)
+top_ten_nodes = sorted_nodes_by_clustering_coefficient[:10]
+st.write("Clustering Coefficient: ")
+st.write("Clustering coefficient is a measure of the degree to which nodes in a network tend to cluster together. It's based on the number of triangles in the network.")
+st.write("Top ten nodes by clustering coefficient:")
+for node, centrality in top_ten_nodes:
+    st.write(f"{node}: {centrality}")
+
 average_clustering = networkx.average_clustering(G)
+st.write("Average Clustering: ")
+st.write("Average clustering is a measure of the degree to which nodes in a network tend to cluster together. It's based on the number of triangles in the network.")
+st.write(average_clustering)
+
 
 diameter = networkx.diameter(G)
 density = networkx.density(G)
 
 
-st.write("Closeness Centrality: ", closeness_centrality)
-st.write("Betweenness Centrality: ", betweenness_centrality)
-st.write("Eigenvector Centrality: ", eigenvector_centrality)
-st.write("PageRank: ", pagerank)
-st.write("Clustering Coefficient: ", clustering_coefficient)
-st.write("Average Clustering: ", average_clustering)
 st.write("Diameter: ", diameter)
 st.write("Density: ", density)
