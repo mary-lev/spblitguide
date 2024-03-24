@@ -90,7 +90,7 @@ sorted_nodes_by_centrality = sorted(degree_centrality.items(), key=lambda item: 
 # Select the top ten nodes
 top_ten_nodes = sorted_nodes_by_centrality[:10]
 
-st.write("Degree Centrality: ")
+st.write("##Degree Centrality: ")
 # Print the top ten nodes along with their centrality values
 st.write("Top ten nodes by degree centrality:")
 for node, centrality in top_ten_nodes:
@@ -101,7 +101,7 @@ closeness_centrality = networkx.closeness_centrality(G)
 sorted_nodes_by_closeness_centrality = sorted(closeness_centrality.items(), key=lambda item: item[1], reverse=True)
 top_ten_nodes = sorted_nodes_by_closeness_centrality[:10]
 
-st.write("Closeness Centrality: ")
+st.write("##Closeness Centrality: ")
 st.write("Closeness centrality is a measure of how close a node is to all other nodes in a network. It's based on the average length of the shortest path from the node to all other nodes in the graph. The idea is to identify how easily a node can reach other nodes in the network.")
 st.write("Top ten nodes by closeness centrality:")
 for node, centrality in top_ten_nodes:
@@ -111,7 +111,7 @@ betweenness_centrality = networkx.betweenness_centrality(G)
 sorted_nodes_by_betweenness_centrality = sorted(betweenness_centrality.items(), key=lambda item: item[1], reverse=True)
 top_ten_nodes = sorted_nodes_by_betweenness_centrality[:10]
 
-st.write("Betweenness Centrality: ")
+st.write("##Betweenness Centrality: ")
 st.write("Betweenness centrality is a measure of how often a node acts as a bridge along the shortest path between two other nodes in a network. It's based on the number of shortest paths that pass through the node.")
 st.write("Top ten nodes by betweenness centrality:")
 for node, centrality in top_ten_nodes:
@@ -120,7 +120,7 @@ for node, centrality in top_ten_nodes:
 eigenvector_centrality = networkx.eigenvector_centrality(G)
 sorted_nodes_by_eigenvector_centrality = sorted(eigenvector_centrality.items(), key=lambda item: item[1], reverse=True)
 top_ten_nodes = sorted_nodes_by_eigenvector_centrality[:10]
-st.write("Eigenvector Centrality: ")
+st.write("##Eigenvector Centrality: ")
 st.write("Eigenvector centrality is a measure of the influence of a node in a network. It's based on the idea that connections to high-scoring nodes contribute more to the score of the node in question.")
 st.write("Top ten nodes by eigenvector centrality:")
 for node, centrality in top_ten_nodes:
@@ -129,7 +129,7 @@ for node, centrality in top_ten_nodes:
 pagerank = networkx.pagerank(G)
 sorted_nodes_by_pagerank = sorted(pagerank.items(), key=lambda item: item[1], reverse=True)
 top_ten_nodes = sorted_nodes_by_pagerank[:10]
-st.write("PageRank: ")
+st.write("##PageRank: ")
 st.write("PageRank is a measure of the importance of a node in a network. It's based on the idea that connections to high-scoring nodes contribute more to the score of the node in question.")
 st.write("Top ten nodes by PageRank:")
 for node, centrality in top_ten_nodes:
@@ -138,14 +138,14 @@ for node, centrality in top_ten_nodes:
 clustering_coefficient = networkx.clustering(G)
 sorted_nodes_by_clustering_coefficient = sorted(clustering_coefficient.items(), key=lambda item: item[1], reverse=True)
 top_ten_nodes = sorted_nodes_by_clustering_coefficient[:10]
-st.write("Clustering Coefficient: ")
+st.write("##Clustering Coefficient: ")
 st.write("Clustering coefficient is a measure of the degree to which nodes in a network tend to cluster together. It's based on the number of triangles in the network.")
 st.write("Top ten nodes by clustering coefficient:")
 for node, centrality in top_ten_nodes:
     st.write(f"{node}: {centrality}")
 
 average_clustering = networkx.average_clustering(G)
-st.write("Average Clustering: ")
+st.write("##Average Clustering: ")
 st.write("Average clustering is a measure of the degree to which nodes in a network tend to cluster together. It's based on the number of triangles in the network.")
 st.write(average_clustering)
 st.write("This value suggests a moderate to high level of clustering within the network. It indicates that there's a significant tendency for nodes to form tightly knit groups characterized by relatively dense connections. In practical terms, nodes (or individuals, if this is a social network) tend to form close-knit communities or groups where each member is likely to be connected to many other members within the same group.")
@@ -155,9 +155,9 @@ diameter = networkx.diameter(G)
 density = networkx.density(G)
 
 
-st.write("Diameter: ", diameter)
+st.write("##Diameter: ", diameter)
 st.write("The diameter of a network is the longest shortest path between any two nodes. A diameter of 4 in this context means that the furthest distance between any two nodes in the network is four edges. This relatively small diameter indicates that the network is quite compact; information or anything else flowing through the network can reach from one end to the other in a small number of steps. It suggests that despite any clustering, the network remains relatively efficient in terms of information dissemination or the spread of influence.")
-st.write("Density: ", density)
+st.write("##Density: ", density)
 st.write("Network density is the ratio of actual edges in the network to the total possible number of edges. The density value provided here indicates a low to moderate level of overall connectivity among the nodes in the network. This suggests that while there are some connections between nodes, the network is not overly saturated with links. There is room for more connections to be made, and not every node is directly connected to every other node, which is typical for larger or more complex networks.")
 
 st.write("In summary, the network is characterized by a good level of local clustering, indicating the presence of community-like structures. Its compactness is highlighted by a small diameter, suggesting efficient pathways for communication or diffusion across the network. However, the network's relatively low density points to a selective pattern of connections, meaning that while there are focused areas of connectivity (e.g., within clusters), the network as a whole is not fully connected, maintaining a balance between cohesion and dispersion.")
