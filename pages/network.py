@@ -78,3 +78,28 @@ plot.renderers.append(network_graph)
 
 
 st.bokeh_chart(plot, use_container_width=True)
+
+## Metrics and Measures
+
+degree_centrality = networkx.degree_centrality(G)
+closeness_centrality = networkx.closeness_centrality(G)
+betweenness_centrality = networkx.betweenness_centrality(G)
+eigenvector_centrality = networkx.eigenvector_centrality(G)
+pagerank = networkx.pagerank(G)
+
+clustering_coefficient = networkx.clustering(G)
+average_clustering = networkx.average_clustering(G)
+
+diameter = networkx.diameter(G)
+density = networkx.density(G)
+
+
+st.write("Degree Centrality: ", degree_centrality)
+st.write("Closeness Centrality: ", closeness_centrality)
+st.write("Betweenness Centrality: ", betweenness_centrality)
+st.write("Eigenvector Centrality: ", eigenvector_centrality)
+st.write("PageRank: ", pagerank)
+st.write("Clustering Coefficient: ", clustering_coefficient)
+st.write("Average Clustering: ", average_clustering)
+st.write("Diameter: ", diameter)
+st.write("Density: ", density)
