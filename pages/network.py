@@ -148,6 +148,7 @@ average_clustering = networkx.average_clustering(G)
 st.write("Average Clustering: ")
 st.write("Average clustering is a measure of the degree to which nodes in a network tend to cluster together. It's based on the number of triangles in the network.")
 st.write(average_clustering)
+st.write("This value suggests a moderate to high level of clustering within the network. It indicates that there's a significant tendency for nodes to form tightly knit groups characterized by relatively dense connections. In practical terms, nodes (or individuals, if this is a social network) tend to form close-knit communities or groups where each member is likely to be connected to many other members within the same group.")
 
 
 diameter = networkx.diameter(G)
@@ -155,4 +156,8 @@ density = networkx.density(G)
 
 
 st.write("Diameter: ", diameter)
+st.write("The diameter of a network is the longest shortest path between any two nodes. A diameter of 4 in this context means that the furthest distance between any two nodes in the network is four edges. This relatively small diameter indicates that the network is quite compact; information or anything else flowing through the network can reach from one end to the other in a small number of steps. It suggests that despite any clustering, the network remains relatively efficient in terms of information dissemination or the spread of influence.")
 st.write("Density: ", density)
+st.write("Network density is the ratio of actual edges in the network to the total possible number of edges. The density value provided here indicates a low to moderate level of overall connectivity among the nodes in the network. This suggests that while there are some connections between nodes, the network is not overly saturated with links. There is room for more connections to be made, and not every node is directly connected to every other node, which is typical for larger or more complex networks.")
+
+st.write("In summary, the network is characterized by a good level of local clustering, indicating the presence of community-like structures. Its compactness is highlighted by a small diameter, suggesting efficient pathways for communication or diffusion across the network. However, the network's relatively low density points to a selective pattern of connections, meaning that while there are focused areas of connectivity (e.g., within clusters), the network as a whole is not fully connected, maintaining a balance between cohesion and dispersion.")
