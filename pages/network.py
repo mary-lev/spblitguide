@@ -82,6 +82,21 @@ st.bokeh_chart(plot, use_container_width=True)
 ## Metrics and Measures
 
 degree_centrality = networkx.degree_centrality(G)
+
+
+# Sort nodes by degree centrality in descending order
+sorted_nodes_by_centrality = sorted(degree_centrality.items(), key=lambda item: item[1], reverse=True)
+
+# Select the top ten nodes
+top_ten_nodes = sorted_nodes_by_centrality[:10]
+
+st.write("Degree Centrality: ")
+# Print the top ten nodes along with their centrality values
+st.write("Top ten nodes by degree centrality:")
+for node, centrality in top_ten_nodes:
+    st.write(f"{node}: {centrality}")
+
+
 closeness_centrality = networkx.closeness_centrality(G)
 betweenness_centrality = networkx.betweenness_centrality(G)
 eigenvector_centrality = networkx.eigenvector_centrality(G)
@@ -94,7 +109,6 @@ diameter = networkx.diameter(G)
 density = networkx.density(G)
 
 
-st.write("Degree Centrality: ", degree_centrality)
 st.write("Closeness Centrality: ", closeness_centrality)
 st.write("Betweenness Centrality: ", betweenness_centrality)
 st.write("Eigenvector Centrality: ", eigenvector_centrality)
