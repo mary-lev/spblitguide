@@ -9,6 +9,8 @@ from bokeh.plotting import from_networkx
 import bokeh.palettes
 from bokeh.palettes import Blues8, Reds8, Purples8, Oranges8, Viridis8, Spectral8
 
+import altair as alt
+
 add_page_title()
 
 show_pages_from_config()
@@ -161,3 +163,124 @@ st.write("Density: ", density)
 st.write("Network density is the ratio of actual edges in the network to the total possible number of edges. The density value provided here indicates a low to moderate level of overall connectivity among the nodes in the network. This suggests that while there are some connections between nodes, the network is not overly saturated with links. There is room for more connections to be made, and not every node is directly connected to every other node, which is typical for larger or more complex networks.")
 
 st.write("In summary, the network is characterized by a good level of local clustering, indicating the presence of community-like structures. Its compactness is highlighted by a small diameter, suggesting efficient pathways for communication or diffusion across the network. However, the network's relatively low density points to a selective pattern of connections, meaning that while there are focused areas of connectivity (e.g., within clusters), the network as a whole is not fully connected, maintaining a balance between cohesion and dispersion.")
+
+
+
+st.subheader("Analysing network communities")
+from networkx.algorithms import community
+communities = community.greedy_modularity_communities(G)
+
+modularity = community.modularity(G, communities)
+coverage, performance = community.partition_quality(G, communities)
+
+st.write("Modularity: ", modularity)
+st.write("Modularity is a measure of the structure of networks or graphs which measures the strength of division of a network into modules (also called groups, clusters or communities). Networks with high modularity have dense connections between the nodes within modules but sparse connections between nodes in different modules.")
+st.write(f"A modularity score of {modularity} indicates that the partitioning of the graph into communities is somewhat significant. Modularity measures the strength of division of a network into modules (or communities). A modularity score closer to 1 indicates a strong community structure, while a score close to 0 suggests a random structure.")
+
+st.write("Coverage: ", coverage)
+st.write("The coverage of a partition is the ratio of the number of intra-community edges to the total number of edges in the graph.")
+st.write(f"A coverage score of {coverage} indicates that approximately {coverage} of the edges in the graph are within communities. A higher coverage suggests that there are relatively more edges within communities compared to between communities. This aligns with the notion of strong community structures within the graph.")
+
+st.write("Performance: ", performance)
+st.write("The performance of a partition is the number of intra-community edges plus inter-community non-edges divided by the total number of potential edges.")
+st.write(f"A performance score of {performance} suggests that a significant portion of potential edges in the graph are realized either as intra-community edges or as inter-community non-edges. Higher performance values indicate better partitioning quality in terms of capturing both within-community cohesion and between-community separation.")
+
+st.subheader("Analysing network measures by communities")
+
+subgraphs = []
+for i in range(len(communities)):
+    nodes = (
+        node
+        for node, data
+        in G.nodes(data=True)
+        if data.get("modularity_class") == i
+    )
+    subgraphs.append(G.subgraph(nodes))
+
+for i in range(len(subgraphs)):
+    st.subheader(f"Community {i}")
+    st.write("Average Clustering: ", networkx.average_clustering(subgraphs[i]))
+    st.write("Diameter: ", networkx.diameter(subgraphs[i]))
+    st.write("Density: ", networkx.density(subgraphs[i]))
+
+
+
+source = pd.DataFrame({
+    'Community label': [f"{i}" for i in range(len(subgraphs))],
+    'Average Clustering': [networkx.average_clustering(subgraph) for subgraph in subgraphs]
+})
+base = alt.Chart(source)
+chart = base.mark_bar().encode(
+    x='Community label',
+    y='Average Clustering'
+).properties(
+        title='Average Clustering by Community',
+        width=600,
+        height=400
+    )
+rule = base.mark_rule(color='red').encode(
+    y=alt.Y(datum=networkx.average_clustering(G))
+)
+label = rule.mark_text(
+    align="right",
+    baseline="bottom",
+    text="Average Clustering for the whole network",
+    color='red'
+)
+st.altair_chart(chart+rule+label)
+
+
+source = pd.DataFrame({
+    'Community label': [f"{i}" for i in range(len(subgraphs))],
+    'Diameter': [networkx.diameter(subgraph) for subgraph in subgraphs]
+})
+
+base = alt.Chart(source)
+chart = base.mark_bar().encode(
+    x='Community label',
+    y='Diameter'
+).properties(
+        title='Diameter by Community',
+        width=600,
+        height=400
+    )
+rule = base.mark_rule(color='red').encode(
+    y=alt.Y(datum=diameter)
+)
+
+label = rule.mark_text(
+    align="right",
+    baseline="bottom",
+    text="Diameter for the whole network",
+    color='red'
+)
+
+st.altair_chart(chart+rule+label)
+
+
+source = pd.DataFrame({
+    'Community label': [f"{i}" for i in range(len(subgraphs))],
+    'Density': [networkx.density(subgraph) for subgraph in subgraphs]
+})
+
+base = alt.Chart(source)
+chart = base.mark_bar().encode(
+    x='Community label',
+    y='Density'
+).properties(
+        title='Density by Community',
+        width=600,
+        height=400
+    )
+rule = base.mark_rule(color='red').encode(
+    y=alt.Y(datum=density)
+)
+
+label = rule.mark_text(
+    align="right",
+    baseline="bottom",
+    text="Density for the whole network",
+    color='red'
+)
+
+st.altair_chart(chart+rule+label)
