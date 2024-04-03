@@ -8,6 +8,7 @@ from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine
 from bokeh.plotting import from_networkx
 import bokeh.palettes
 from bokeh.palettes import Blues8, Reds8, Purples8, Oranges8, Viridis8, Spectral8
+import numpy as np
 
 import altair as alt
 
@@ -284,3 +285,54 @@ label = rule.mark_text(
 )
 
 st.altair_chart(chart+rule+label)
+
+# st.write(len(subgraphs[i]))
+
+
+st.subheader("Are there key figures bridging the communities?")
+st.write("To answer this question, we will take a look at how evenly the neighbors of a node are distributed among the communities for each node vs for the top central node")
+st.write("For each node, we will count how many of its neigbors belong to community1, community2 or community3, and count the coefficient of variation for the three numbers $CV = \\frac{StDev}{Mean}$")
+st.write(f"For the whole set of nodes we will count mean coefficient of variation $Mean(CV)$")
+
+
+top_by_centrality = [x[0] for x in sorted_nodes_by_centrality[:10]]
+        
+def calculate_homogenity(nodes=G.nodes()):
+    homogenity_all = []
+    for node, data in G.nodes(data=True):
+        if node in nodes:
+            subgraphs_by_node = []
+            subgraphs_len_by_node = [0,0,0]
+
+
+            all_neighbor_nodes = (
+                neighbor
+                for neighbor
+                in G.neighbors(node)
+            )
+            all_neighbors = G.subgraph(all_neighbor_nodes)
+            for i in range(len(communities)):
+                nodes_to_add = (
+                    node
+                    for node, data
+                    in all_neighbors.nodes(data=True)
+                    if data.get("modularity_class") == i
+                )
+                subgraphs_by_node.append(all_neighbors.subgraph(nodes_to_add))
+
+            subgraphs_len_by_node = [
+                len(subgraphs_by_node[i]) for i in range(len(subgraphs_by_node))
+            ]
+
+            homogenity_all.append(np.std(subgraphs_len_by_node) / np.mean(subgraphs_len_by_node))
+    return homogenity_all
+
+homogenity_all = calculate_homogenity(G.nodes())
+st.write("Mean Variation for neighbors of all nodes $Mean(CV)_{all}$",np.mean(homogenity_all))
+st.write("Standard Devitation of CV for neighbors of all nodes $StDev(CV)_{all}$",np.std(homogenity_all))
+
+homogenity_top = calculate_homogenity(top_by_centrality)
+st.write("Mean Variation for neighbors of top-10 nodes by degree centrality $Mean(CV)_{top10}$", np.mean(homogenity_top))
+st.write("Standard Devitation of CV for neighbors of top-10 nodes $StDev(CV)_{top10}$",np.std(homogenity_top))
+
+st.write("This qualitative difference in the results suggests that the most degree-central nodes tend to communicate with the nodes from different communities more evenly than just any node. This supports our hypothesis that the literary communities are bridged by 'key figure' nodes bridging different communities")
